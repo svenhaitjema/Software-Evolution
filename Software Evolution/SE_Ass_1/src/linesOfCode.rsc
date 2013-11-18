@@ -20,7 +20,7 @@ public int getUnitLinesOfCode(){
 }
 
 
-public str getLinesOfCodeToMYBF(int line_count)
+public str linesOfCodeToMYBF(int line_count)
 {
 	 if(linesOfCode <= 66000)
 	 {

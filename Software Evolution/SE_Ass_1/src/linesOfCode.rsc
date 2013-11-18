@@ -12,11 +12,30 @@ import linesOfCode;
 
 
 public int getProjectLinesOfCode(M3 model){
-  return 1;
+  int total_project_loc=0;
+  set[loc] tmp_files = files(model);
+  for(tmp_file <- tmp_files)
+  {
+   total_project_loc = total_project_loc + getUnitLinesOfCode(tmp_file);
+  }
+  return total_project_loc;
 }
 
 public int getUnitLinesOfCode(loc unit){
-  return 1;
+   return size(getFilteredUnitLines(unit));
+}
+
+public list[str] getFilteredUnitLines(loc unit)
+{
+ 	str unit_line = readFile(unit);
+	str new_lines = "";
+	for( /<item:\".*\">/ := unit_line) {unit_line = replaceFirst(unit_line, item, "\"\"");}
+	for( /<item:\/\/.*>/ := unit_line) {unit_line = replaceFirst(unit_line, item, "");}
+	for( /<item:\/\*(?s).*?\*\/>/ := unit_line) {unit_line = replaceFirst(unit_line, item, "");} // http://ostermiller.org/findcomment.html
+	println(unit_line);
+	list[str] unit_lines = [];
+	unit_lines = unit_lines + [trim(line) | /<line:^.*\S.*$>/ <- split("\n",unit_line )];
+	return unit_lines;
 }
 
 

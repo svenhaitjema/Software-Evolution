@@ -6,12 +6,15 @@ public class Second {
 
 	public Second(int a){
 		this.a = a;
-		
+		if(a==0)
+		{
+			System.out.println(a);
+		}
 	}
 	
 	public void bla() // Test
 	{
-	
+		 assertEquals("name", 0, "bla");
 	     int a = 0;
 	     if(a == 0)
 	     {

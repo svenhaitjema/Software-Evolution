@@ -15,7 +15,7 @@ public int getProjectLinesOfCode(M3 model){
   return 1;
 }
 
-public int getUnitLinesOfCode(){
+public int getUnitLinesOfCode(loc unit){
   return 1;
 }
 

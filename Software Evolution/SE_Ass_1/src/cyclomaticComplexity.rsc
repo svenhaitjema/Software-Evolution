@@ -1,7 +1,7 @@
 module cyclomaticComplexity
 
-public void getProjectComplexity(){
+public str getProjectComplexity(int project_lines_of_code){
 }
 
-public void getUnitComplexity(){
+public int getUnitComplexity(loc unit){
 }

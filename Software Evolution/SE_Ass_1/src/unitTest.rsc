@@ -12,7 +12,13 @@ import linesOfCode;
 import cyclomaticComplexity;
 import duplicates;
 
-
+/*
+ Rationale:
+ 
+ The number is too low, reason: 
+ 
+ The used application has abstracted testfunctions 
+*/
 
 public int getUnitTestCount(M3 project_model)
 {
@@ -23,14 +29,14 @@ public int getUnitTestCount(M3 project_model)
    list[str] lines =  getFilteredUnitLines(tmp_file);
    for(line <- lines)
    {
-    if(/assertArrayEquals/ := line) asserts = asserts+1;
-    if(/assertEquals/ := line) asserts = asserts+1;
-    if(/assertFalse/ := line) asserts = asserts+1;
-    if(/assertNotNull/ := line) asserts = asserts+1;
-    if(/assertNotSame/ := line) asserts = asserts+1;
-    if(/assertNull/ := line) asserts = asserts+1;
-    if(/assertSame/ := line) asserts = asserts+1;
-    if(/assertTrue/ := line) asserts = asserts+1;
+    for(/<word: assertArrayEquals>/ := line) {asserts = asserts+1;}
+    for(/<word:assertEquals>/ := line) {asserts = asserts+1;}
+    for(/<word:assertFalse>/ := line) {asserts = asserts+1;}
+    for(/<word:assertNotNull>/ := line) {asserts = asserts+1;}
+    for(/<word:assertNotSame>/ := line) {asserts = asserts+1;}
+    for(/<word:assertNull>/ := line) {asserts = asserts+1;}
+    for(/<word:assertSame>/ := line) {asserts = asserts+1;}
+    for(/<word:assertTrue>/ := line) {asserts = asserts+1;}
    }
   }
 

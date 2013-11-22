@@ -29,7 +29,7 @@ public list[str] getFilteredUnitLines(loc unit)
 {
  	str unit_line = readFile(unit);											// Read file as one string
 	str new_lines = "";
-	for( /<item:\".*\">/ := unit_line) {unit_line = replaceFirst(unit_line, item, "\"\"");} // Replace all strings with ""
+	for( /<item:\".*\">/ := unit_line) {unit_line = replaceFirst(unit_line, item, "");} // Replace all strings with ""
 	for( /<item:\/\/.*>/ := unit_line) {unit_line = replaceFirst(unit_line, item, "");}     // Replace all single line comments
 	for( /<item:\/\*(?s).*?\*\/>/ := unit_line) {unit_line = replaceFirst(unit_line, item, "");} // Replace all multi line comments // http://ostermiller.org/findcomment.html
 	list[str] unit_lines = [];

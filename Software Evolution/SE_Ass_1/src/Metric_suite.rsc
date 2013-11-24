@@ -29,7 +29,6 @@ public void runAnalytics()
  set[Declaration] project_ast = createAstsFromEclipseProject(p, false);									// Create Abstract Syntax Tree
  M3 project_model = createM3FromEclipseProject(|project://hello|);										// Create M3 Model from prject
  total_project_loc = getProjectLinesOfCode(project_model);												
- println(total_project_loc);
  
 
 
@@ -46,10 +45,9 @@ public void runAnalytics()
 // println(unit_list);
  
  
- print("Cyclomatic Complexity: ");println(getProjectComplexity(unit_list));
+ print("Cyclomatic Complexity: "); println(getProjectComplexity(unit_list));
  
- print("Duplicate %: ");
- println(getProjectCodeDuplicates(project_model));
+ print("Duplicate %: "); println(getProjectCodeDuplicates(project_model));
 
  print("Unit tests: ");
  println(getUnitTestCount(project_model));

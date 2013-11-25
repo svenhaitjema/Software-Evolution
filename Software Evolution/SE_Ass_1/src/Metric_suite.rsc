@@ -27,9 +27,9 @@ int usefull_lines =0;
 
 public void runAnalytics()
 {
- loc p = |project://hello|;																				// Get project as loc
+ loc p = |project://hsqldb-2.3.1|;																				// Get project as loc
  set[Declaration] project_ast = createAstsFromEclipseProject(p, false);									// Create Abstract Syntax Tree
- M3 project_model = createM3FromEclipseProject(|project://hello|);										// Create M3 Model from prject
+ M3 project_model = createM3FromEclipseProject(|project://hsqldb-2.3.1|);										// Create M3 Model from prject
  total_project_loc = getProjectLinesOfCode(project_model);												
  
 
@@ -48,10 +48,11 @@ public void runAnalytics()
  int cc = getProjectComplexity(unit_list);
  print("Cyclomatic Complexity: "); println(cc);
  
- int duplicates = getProjectCodeDuplicates(project_ast,total_project_loc,usefull_lines);
+ //int duplicates = getProjectCodeDuplicates(project_ast,total_project_loc,usefull_lines);
+ int duplicates = getProjectCodeDuplicates(project_model,usefull_lines);
  print("Duplicates : "); println(duplicates);
  
- print("Unit tests: "); println(getUnitTestCount(project_model));
+ print("Asserts: "); println(getUnitTestCount(project_model));
  
  
  int unit_size = getProjectUnitSize(unit_list);

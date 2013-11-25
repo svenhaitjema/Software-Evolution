@@ -10,8 +10,8 @@ import lang::java::jdt::m3::AST;
 import util::Math;
 
 
-public str getProjectComplexity(rel[str name,int linesofcode,int cc] units){
-	 int simple = 0;
+public int getProjectComplexity(rel[str name,int linesofcode,int cc] units){
+ int simple = 0;
  int moderate = 0;
  int high = 0;
  int very_high = 0;
@@ -46,20 +46,16 @@ real very_high_perc = (toReal(very_high) / toReal(project_method_lines_of_code))
  println(very_high_perc);
  }
  
- if(moderate_perc <= 25 && high_perc == 0 && very_high_perc==0) return "++";
- if(moderate_perc <= 30 && high_perc <= 5 && very_high_perc==0) return "+";
- if(moderate_perc <= 40 && high_perc <= 10 && very_high_perc==0) return "o";
- if(moderate_perc <= 50 && high_perc <= 15 && very_high_perc <= 5) return "-";
- if(moderate_perc <= 40 && high_perc <= 10 && very_high_perc==0) return "o";
+ if(moderate_perc <= 25 && high_perc == 0 && very_high_perc==0) return 2;
+ if(moderate_perc <= 30 && high_perc <= 5 && very_high_perc==0) return 1;
+ if(moderate_perc <= 40 && high_perc <= 10 && very_high_perc==0) return 0;
+ if(moderate_perc <= 50 && high_perc <= 15 && very_high_perc <= 5) return -1;
+ return -2;
 }
 
-public int getUnitComplexity(loc unit){
-    return 0;
-}
 
 public int getNodeComplexity(Statement unit){
-    
-  abcd=0;
+
  ifs = 0;
  elifs =0;
  cases = 0;
@@ -68,8 +64,7 @@ public int getNodeComplexity(Statement unit){
  do_while_loops =0;
  fors = 0;
  trys =0;
- 
- 
+
  bool debug = false;
  
  
@@ -81,29 +76,28 @@ public int getNodeComplexity(Statement unit){
      case \while(_,_): while_loops = while_loops+1;
      case \do(_,_): do_while_loops = do_while_loops+1;
      case \for(_,_,_,_) : fors = fors+1;
-    // case \try(_,_) : trys = trys+1; find catch 
+     case \catch(_,_) : trys = trys+1;
     }
   if(debug){  
-    
-     print("Cases: ");
- println(cases);
- print("Ifs: ");
- println(ifs);
- print("Elifs: ");
- println(elifs);
- print("Ininite loops: ");
- println(infinite_loops);
- print("while loops: ");
- println(while_loops);
- print("Do while loops: ");
- println(do_while_loops);
- print("Fors: ");
- println(fors);
- print("trys: ");
- println(trys);
- print("Complexity: ");
- println(cases+ifs+elifs+while_loops+do_while_loops+fors+trys);
- }
- return cases+ifs+elifs+while_loops+do_while_loops+fors+trys;
+ 	print("Cases: ");
+ 	println(cases);
+ 	print("Ifs: ");
+ 	println(ifs);
+ 	print("Elifs: ");
+ 	println(elifs);
+ 	print("Ininite loops: ");
+ 	println(infinite_loops);
+ 	print("while loops: ");
+ 	println(while_loops);
+ 	print("Do while loops: ");
+ 	println(do_while_loops);
+ 	print("Fors: ");
+ 	println(fors);
+ 	print("trys: ");
+ 	println(trys);
+ 	print("Complexity: ");
+ 	println(1+cases+ifs+elifs+while_loops+do_while_loops+fors+trys);
+  }
+ return 1+cases+ifs+elifs+while_loops+do_while_loops+fors+trys;
 }
 

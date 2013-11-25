@@ -20,6 +20,7 @@ import duplicates;
  The used application has abstracted testfunctions 
 */
 
+
 public int getUnitTestCount(M3 project_model)
 {
   int asserts = 0;

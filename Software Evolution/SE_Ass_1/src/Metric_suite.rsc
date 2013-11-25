@@ -27,9 +27,9 @@ int usefull_lines =0;
 
 public void runAnalytics()
 {
- loc p = |project://smallsql0|;																				// Get project as loc
+ loc p = |project://hello|;																				// Get project as loc
  set[Declaration] project_ast = createAstsFromEclipseProject(p, false);									// Create Abstract Syntax Tree
- M3 project_model = createM3FromEclipseProject(|project://smallsql0|);										// Create M3 Model from prject
+ M3 project_model = createM3FromEclipseProject(|project://hello|);										// Create M3 Model from prject
  total_project_loc = getProjectLinesOfCode(project_model);												
  
 

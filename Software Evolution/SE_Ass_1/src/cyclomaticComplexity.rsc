@@ -66,15 +66,18 @@ public int getNodeComplexity(Statement unit){
  trys =0;
 
  bool debug = false;
- 
+///println(unit);
  
   visit(unit){
+ 
      case \if(B,_): ifs= ifs+1;
+     case \infix(_,op,_,_) : {if(op == "&&" || op=="||" ) ifs=ifs+1; }
+     case \conditional(_,_,_) : {ifs=ifs+1;}
      case \if(_,_,_): elifs= elifs+1;
      case \case(_): cases= cases+1;
-     case \while(booleanLiteral(true),_): infinite_loops = infinite_loops+1;
+   //  case \while(booleanLiteral(true),_): infinite_loops = infinite_loops+1;
      case \while(_,_): while_loops = while_loops+1;
-     case \do(_,_): do_while_loops = do_while_loops+1;
+   //  case \do(_,_): do_while_loops = do_while_loops+1;
      case \for(_,_,_,_) : fors = fors+1;
      case \catch(_,_) : trys = trys+1;
     }

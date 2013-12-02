@@ -32,8 +32,7 @@ public list[str] getFilteredUnitLines(loc unit)
 	for( /<item:\".*\">/ := unit_line) {unit_line = replaceFirst(unit_line, item, "");} // Replace all strings with ""
 	for( /<item:\/\/.*>/ := unit_line) {unit_line = replaceFirst(unit_line, item, "");}     // Replace all single line comments
 	for( /<item:\/\*(?s).*?\*\/>/ := unit_line) {unit_line = replaceFirst(unit_line, item, "");} // Replace all multi line comments // http://ostermiller.org/findcomment.html
-	list[str] unit_lines = [];
-	unit_lines = unit_lines + [trim(line) | /<line:^.*\S.*$>/ <- split("\n",unit_line )]; // Split the string through \n and trim all non readable characters
+	list[str] unit_lines = [trim(line) | line <- split("\n",unit_line ),!isEmpty(trim(line))]; // Split the string through \n and trim all non readable characters
 	return unit_lines;
 }
 

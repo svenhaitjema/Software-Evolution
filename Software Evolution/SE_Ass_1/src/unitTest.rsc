@@ -13,11 +13,11 @@ import cyclomaticComplexity;
 import duplicates;
 
 /*
- Rationale:
+ Argument:
  
  The number is too low, reason: 
  
- The used application has abstracted testfunctions 
+ The used application has abstracted test functions
 */
 
 

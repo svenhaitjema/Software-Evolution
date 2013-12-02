@@ -7,7 +7,7 @@ package hello;
 
 //hoi
 
-public class Main {
+public class ALFA {
 	/* in class test 
 	 * werkt niet
 	 */
